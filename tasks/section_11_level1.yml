@@ -97,7 +97,7 @@
   - name: 11.2 Remove OS Information from Login Warning Banners (Scored)
     replace: >
       dest=/etc/{{ item }}
-      regexp='\\r|\\v|\\s|\\m'
+      regexp='.*'
       replace='[CIS replaced]'
     sudo: yes
     with_items:
