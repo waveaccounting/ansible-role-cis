@@ -24,7 +24,7 @@
     tags:
       - scored
       - section6.1
-      
+
   - name: 6.2 Ensure Avahi Server is not enabled (Scored) - check for avahi-daemon
     stat: path=/etc/init.d/avahi-daemon
     register: avahi_daemon_service
@@ -43,7 +43,7 @@
     tags:
       - scored
       - section6.2
-      
+
   - name: 6.3 Ensure print server is not enabled (Not Scored) - check for cups_service
     stat: path=/etc/init.d/cups
     register: cups_service
@@ -62,7 +62,7 @@
     tags:
       - notscored
       - section6.3
-          
+
   - name: 6.4 Ensure DHCP Server is not enabled (Scored) - check for isc-dhcp-server
     stat: path=/etc/init.d/isc-dhcp-server
     register: isc_dhcp_server_service
@@ -109,17 +109,16 @@
     tags:
       - scored
       - section6.5
-  
+
   - name: 6.5 Configure Network Time Protocol (NTP) (Scored) - enable service
     service: >
       name=ntp
-      state=started
       enabled=yes
     sudo: yes
     tags:
       - scored
       - section6.5
-      
+
   - name: 6.5 Configure Network Time Protocol (NTP) (Scored) - via ntp.conf
     lineinfile: >
         backup=yes
@@ -162,7 +161,7 @@
     tags:
       - notscored
       - section6.7
-      
+
   - name: 6.7 Ensure NFS and RPC are not enabled (Not Scored) - rpcbind service
     service: >
       name=rpcbind-boot
@@ -175,7 +174,7 @@
     tags:
       - notscored
       - section6.7
-     
+
   - name: 6.7 Ensure NFS and RPC are not enabled (Not Scored) - nfs-kernel-server service
     service: >
       name=nfs-kernel-server
@@ -268,7 +267,7 @@
     tags:
       - notscored
       - section6.11
-      
+
   - name: 6.12 Ensure Samba is not enabled (Not Scored) - check for smbd
     stat: path=/etc/init.d/smbd
     register: smbd_service
@@ -340,8 +339,8 @@
 
   - name: 6.15 Configure Mail Transfer Agent for Local-Only Mode (Scored) - via main.cf
     lineinfile: >
-      backup=yes 
-      state=present 
+      backup=yes
+      state=present
       dest=/etc/postfix/main.cf
       backrefs=yes
       regexp="^inet_interfaces"
@@ -362,8 +361,8 @@
 
   - name: 6.16 Ensure rsync service is not enabled (Scored) - via default
     lineinfile: >
-      backup=yes 
-      state=present 
+      backup=yes
+      state=present
       dest=/etc/default/rsync
       backrefs=yes
       regexp="^RSYNC_ENABLE"
@@ -385,7 +384,7 @@
     tags:
       - scored
       - section6.16
-      
+
   - name: 6.17 Ensure Biosdevname is not enabled (Scored)
     apt: >
       pkg=biosdevname
