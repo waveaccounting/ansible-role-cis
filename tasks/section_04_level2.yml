@@ -32,9 +32,23 @@
       - scored
       - section4.5
 
+  - name: 4.5 Activate AppArmor (Scored) - start rsyslogd so that apparmor can perform enforce
+    shell: /usr/sbin/rsyslogd -n &
+    sudo: yes
+    tags:
+      - scored
+      - section 4.5
+
   - name: 4.5 Activate AppArmor (Scored) - set profiles to enforce
     shell: aa-enforce /etc/apparmor.d/*
     sudo: yes
     tags:
       - scored
       - section4.5
+
+  - name: 4.5 Activate AppArmor (Scored) - shutdown rsyslogd background process
+    shell: kill -9 $(cat /var/run/rsyslogd.pid)
+    sudo: yes
+    tags:
+      - scored
+      - section 4.5
